@@ -72,7 +72,7 @@
     onMount(async () => {
         const token = localStorage.getItem('sso_token');
         if (!token) {
-            window.location.href = 'http://localhost:5176';
+            window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
             return;
         }
 
@@ -86,7 +86,7 @@
                 alert('Akses Ditolak: Aplikasi ini hanya diperuntukkan bagi Perangkat Desa.');
                 localStorage.removeItem('sso_token');
                 localStorage.removeItem('sso_user');
-                window.location.href = 'http://localhost:5176';
+                window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
                 return;
             }
         } catch (e) {
@@ -133,7 +133,7 @@
     function logout() {
         localStorage.removeItem('sso_token');
         localStorage.removeItem('sso_user');
-        window.location.href = 'http://localhost:5176';
+        window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
     }
 
     // --- WEBRTC CAMERA LOGIC ---

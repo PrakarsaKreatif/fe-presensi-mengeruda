@@ -22,7 +22,7 @@
                     if (!userApps.includes('E-Presensi') && !userData.roles?.some(r => r.name === 'Super Admin')) {
                         alert('Akses Ditolak: Aplikasi ini hanya diperuntukkan bagi Perangkat Desa.');
                         localStorage.removeItem('sso_token');
-                        window.location.href = 'http://localhost:5176';
+                        window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
                         return;
                     }
 
@@ -33,7 +33,7 @@
             } catch (error) {
                 console.error("Gagal verifikasi token lokal", error);
                 // Redirect back to SSO login
-                window.location.href = 'http://localhost:5176';
+                window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
             }
         } else {
             // Jika tidak ada token, kembali ke halaman utama

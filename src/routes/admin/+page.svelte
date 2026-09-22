@@ -35,7 +35,7 @@
     onMount(() => {
         const token = localStorage.getItem('sso_token');
         if (!token) {
-            window.location.href = 'http://localhost:5176';
+            window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
             return;
         }
 

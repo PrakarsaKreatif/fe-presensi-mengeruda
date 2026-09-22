@@ -12,7 +12,7 @@
     const handleLogout = () => {
         localStorage.removeItem('sso_token');
         localStorage.removeItem('sso_user');
-        window.location.href = 'http://localhost:5176';
+        window.location.href = (import.meta.env.VITE_PUBLIC_SSO_URL || 'http://localhost:5176');
     };
 </script>
 
